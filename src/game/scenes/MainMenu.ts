@@ -14,7 +14,7 @@ export class MainMenu extends Scene {
 
     create() {
         this.background = this.add.image(512, 384, 'background');
-        this.background.setAlpha(0.8);
+        this.background.setAlpha(0.6);
 
         this.logo = this.add.image(512, 300, 'logo').setDepth(100);
 
