@@ -5,7 +5,7 @@ import { EventBus } from '../EventBus';
 export class MainMenu extends Scene {
     background: GameObjects.Image;
     logo: GameObjects.Image;
-    title: GameObjects.Text;
+    startButton: GameObjects.Text;
     logoTween: Phaser.Tweens.Tween | null;
 
     constructor() {
@@ -14,16 +14,25 @@ export class MainMenu extends Scene {
 
     create() {
         this.background = this.add.image(512, 384, 'background');
+        this.background.setAlpha(0.8);
 
         this.logo = this.add.image(512, 300, 'logo').setDepth(100);
 
-        this.title = this.add.text(512, 460, 'Start', {
+        this.startButton = this.add.text(512, 460, 'Start', {
             fontFamily: 'Arial Black', fontSize: 38, color: '#ffffff',
             stroke: '#000000', strokeThickness: 8,
-            align: 'center'
+            align: 'center',
         }).setOrigin(0.5).setDepth(100);
 
+        this.startButton.setInteractive({ useHandCursor: true })
+        this.startButton.on("pointerdown", () => this.startGame())
+
+
         EventBus.emit('current-scene-ready', this);
+    }
+
+    startGame() {
+        this.scene.start('Game');
     }
 
     changeScene() {
