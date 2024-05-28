@@ -5,12 +5,18 @@ import { MainMenu } from './scenes/MainMenu';
 import { AUTO, Game } from 'phaser';
 import { Preloader } from './scenes/Preloader';
 
-//  Find out more information about the Game Config at:
-//  https://newdocs.phaser.io/docs/3.70.0/Phaser.Types.Core.GameConfig
-export const phaserConfig: Phaser.Types.Core.GameConfig = {
-    type: AUTO,
+export const sizes = {
     width: 1024,
     height: 768,
+};
+
+export const defaultSpeed = 300;
+
+
+export const phaserConfig: Phaser.Types.Core.GameConfig = {
+    type: AUTO,
+    width: sizes.width,
+    height: sizes.height,
     parent: 'game-container',
     backgroundColor: '#028af8',
     physics: {
